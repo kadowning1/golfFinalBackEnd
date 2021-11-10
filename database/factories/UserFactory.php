@@ -15,7 +15,7 @@ class UserFactory extends Factory
      */
     public function definition()
     {
-        $hashedPassword = Hash::make('string');
+        $hashedPassword = Hash::make('changeme');
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
