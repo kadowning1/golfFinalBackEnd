@@ -3,8 +3,10 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Author;
+use App\Models\Book;
 
-class BookFactory extends Factory
+class BookAuthorFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -13,10 +15,12 @@ class BookFactory extends Factory
      */
     public function definition()
     {
+
+        // $books = Book::all();
+
         return [
-            'name' => $this->faker->realText($maxNbChars = 20, $indexSize = 2),
-            'description' => $this->faker->sentence,
-            'publication_year' => (string)$this->faker->year
+           'book_id' => Book::all()->random()->id,
+           'author_id' => Author::all()->random()->id
         ];
     }
 }
