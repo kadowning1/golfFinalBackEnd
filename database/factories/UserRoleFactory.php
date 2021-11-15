@@ -15,9 +15,9 @@ class UserRoleFactory extends Factory
      */
     public function definition()
     {
-         return [
-           'user_id' => User::all()->random()->id,
-           'roles_id' => Role::all()->random()->id
-        ];
+        //  return [
+        //    'user_id' => User::all()->random()->id,
+        //    'roles_id' => Role::all()->random()->id
+        // ];
     }
 }

@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Book;
+use App\Models\User;
 
 class CheckoutFactory extends Factory
 {
@@ -14,8 +16,8 @@ class CheckoutFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => $this->faker->name,
-            'checked_out' => $this->faker->sentence,
+            'user_id' => User::all()->random()->id,
+            'checked_out' => Book::all()->random()->id,
             'return_date' => (string)$this->faker->date,
         ];
     }

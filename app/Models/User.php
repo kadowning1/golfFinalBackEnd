@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 
+use App\Models\UserRole;
 
 class User extends Authenticatable
 {
@@ -23,6 +24,10 @@ class User extends Authenticatable
         'email',
         'password',
     ];
+     public function userRole()
+    {
+        return $this->hasOne(UserRole::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
