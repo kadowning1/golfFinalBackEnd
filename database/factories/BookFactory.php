@@ -16,7 +16,9 @@ class BookFactory extends Factory
         return [
             'name' => $this->faker->realText($maxNbChars = 20, $indexSize = 2),
             'description' => $this->faker->sentence,
-            'publication_year' => (string)$this->faker->year
+            'publication_year' => (string)$this->faker->year,
+            'isbn' => (string)$this->faker->isbn13,
+            'checked_out' => (boolean)$this->faker->boolean // need to update
         ];
     }
 }

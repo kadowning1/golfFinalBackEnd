@@ -22,7 +22,6 @@ class UserFactory extends Factory
             // 'email_verified_at' => now(),
             // 'password' => Hash::check('plain-text', $hashedPassword),
             'password' => $hashedPassword,
-
             'remember_token' => Str::random(10),
         ];
     }

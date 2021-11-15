@@ -5,11 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Checkout extends Model
+class Role extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['return_date', 'checked_out', 'user_id']; // need to change
+    protected $fillable = ['name'];
 
-    //need to establish connection
 }

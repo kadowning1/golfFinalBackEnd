@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Checkout;
+use App\Models\UserRole;
 
-class CheckoutSeeder extends Seeder
+class UserRoleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class CheckoutSeeder extends Seeder
      */
     public function run()
     {
-         Checkout::factory(10)->create();
+        UserRole::factory(100)->create();
     }
 }

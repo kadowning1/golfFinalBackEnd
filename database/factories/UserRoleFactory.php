@@ -3,8 +3,10 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Role;
+use App\Models\User;
 
-class CheckoutFactory extends Factory
+class UserRoleFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -13,10 +15,9 @@ class CheckoutFactory extends Factory
      */
     public function definition()
     {
-        return [
-            'user_id' => $this->faker->name,
-            'checked_out' => $this->faker->sentence,
-            'return_date' => (string)$this->faker->date,
+         return [
+           'user_id' => User::all()->random()->id,
+           'roles_id' => Role::all()->random()->id
         ];
     }
 }
