@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BooksController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CheckoutController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +28,8 @@ Route::middleware('auth:api')->prefix('v1')->group(function () {
     });
     Route::apiResource('/authors', AuthorController::class);
     Route::apiResource('/books', BooksController::class);
+    Route::apiResource('/user', UserController::class);
+    Route::apiResource('/checkout', CheckoutController::class);
 
     // Route::get('/authors/{author}', [AuthorController::class, 'show']
     // );

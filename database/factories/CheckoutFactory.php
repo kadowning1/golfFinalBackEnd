@@ -18,7 +18,7 @@ class CheckoutFactory extends Factory
         return [
             'user_id' => User::all()->random()->id,
             'checked_out' => Book::all()->random()->id,
-            'return_date' => (string)$this->faker->date,
+            'return_date' => $this->faker->dateTimeBetween($startDate='now', $endDate='+1 month', $timezone = null)
         ];
     }
 }

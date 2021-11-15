@@ -80,6 +80,7 @@ class CheckoutController extends Controller
      */
     public function destroy(Checkout $checkout)
     {
-        //
+         $checkout->delete();
+        return response(null, 204);
     }
 }
