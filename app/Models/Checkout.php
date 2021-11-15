@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Checkout extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['name', 'description', 'publication_year']; // need to change
+
+    //need to establish connection
 }

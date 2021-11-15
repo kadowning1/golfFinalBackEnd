@@ -14,7 +14,9 @@ class CheckoutFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->realText($maxNbChars = 20, $indexSize = 2),
+            'description' => $this->faker->sentence,
+            'publication_year' => (string)$this->faker->year
         ];
     }
 }
