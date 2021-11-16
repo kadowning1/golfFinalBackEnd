@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Checkout extends JsonResource
+class CheckoutResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -19,9 +19,8 @@ class Checkout extends JsonResource
             'type' => 'Checkout',
             'attributes' => [
                 'name' => $this->name,
-                'description' => $this->description,
-                'publication_year' => $this->publication_year,
-                'isbn' => $this->isbn,
+                'checked_out' => $this->checked_out,
+                'return_date' => $this->return_date,
                 'created_at' => $this->created_at,
                 'updated_at' => $this->updated_at
             ]

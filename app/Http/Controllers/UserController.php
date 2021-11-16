@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Resources\UserResource;
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 
@@ -15,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return UserResource::collection(User::all());
     }
 
     /**
@@ -34,9 +36,15 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //
+        // return 'TEST';
+        $faker = \Faker\Factory::create(2);
+
+        $user = User::create([
+            'name' => $faker->name,
+        ]);
+        return new UserResource($user);
     }
 
     /**
@@ -47,7 +55,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+       return new UserResource($user);
     }
 
     /**
@@ -69,8 +77,12 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, User $user)
-    {
-        //
+      {
+        $user->update([
+            'name' => $request->input('name')
+        ]);
+
+        return new UserResource($user);
     }
 
     /**
