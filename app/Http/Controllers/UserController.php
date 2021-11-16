@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Role;
+use App\Models\UserRole;
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
 use App\Http\Requests\UserRequest;
@@ -16,18 +16,18 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $userRole = [
-            'SuperUser',
-            'Librarian',
-            'Cardholder'
-        ];
+        $user = $request->user();
+        $userRoles = UserRole::with('role')->where('user_id', $user->id)->get();
+        $userRole = $userRoles[0];
 
-        if ($this->$userRole == 'SuperUser' || 'Librarian'){
-        return UserResource::collection(User::all());
-        } else {
+        // dd($userRole);
+
+        if ($userRole->role->label == 'Cardholder') {
             return 'Not authorized';
+        } else {
+            return UserResource::collection(User::all());
         }
     }
 
@@ -68,7 +68,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-       return new UserResource($user);
+        return new UserResource($user);
     }
 
     /**
@@ -90,7 +90,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, User $user)
-      {
+    {
         $user->update([
             'name' => $request->input('name'),
             'password' => $request->input('password'),
@@ -112,4 +112,3 @@ class UserController extends Controller
         return response(null, 204);
     }
 }
-

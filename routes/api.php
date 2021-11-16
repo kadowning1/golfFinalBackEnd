@@ -27,19 +27,24 @@ Route::middleware('auth:api')->prefix('v1')->group(function () {
         return $request->user();
     });
     Route::get('/users', [UserController::class, 'index']);
+    Route::get('/books', [BooksController::class, 'index']);
 
     Route::apiResource('/authors', AuthorController::class);
-    Route::apiResource('/books', BooksController::class);
+    // Route::apiResource('/books', BooksController::class);
     Route::apiResource('/checkout', CheckoutController::class);
 
     // Route::get('/authors/{author}', [AuthorController::class, 'show']
     // );
     // Route::get('/authors', [AuthorController::class, 'index']
     // );
+    // Route::get('/user', function (Request $request) {
+    //     return $request->user()->toArray();
+    // });
 });
 
 // Route::apiResource('/user', UserController::class);
-Route::get('/user', function (Request $request) {
+
+Route::get('/books', function (Request $request) {
     return $request->user()->toArray();
 });
 
