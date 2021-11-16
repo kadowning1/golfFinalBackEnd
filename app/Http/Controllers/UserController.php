@@ -23,8 +23,6 @@ class UserController extends Controller
         $userRoles = UserRole::with('role')->where('user_id', $user->id)->get();
         $userRole = $userRoles[0];
 
-        // dd($userRole);
-
         if ($userRole->role->label == 'Cardholder') {
             return 'Not authorized';
         } else {
