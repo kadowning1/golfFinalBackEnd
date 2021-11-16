@@ -42,6 +42,8 @@ class BooksController extends Controller
             'name' => $faker->name,
             'description' => $faker->sentence,
             'publication_year' => $faker->year,
+            'isbn' => $faker->isbn13,
+            'checked_out' => false
         ]);
         return new BooksResource($book);
     }
@@ -82,6 +84,7 @@ class BooksController extends Controller
             'description' => $request->input('description'),
             'publication_year' => $request->input('publication_year'),
             'isbn' => $request->input('isbn'),
+            'checked_out' => $request->boolean(true)
         ]);
 
         return new BooksResource($book);

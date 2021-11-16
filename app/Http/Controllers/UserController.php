@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
 use App\Http\Requests\UserRequest;
@@ -17,7 +18,17 @@ class UserController extends Controller
      */
     public function index()
     {
+        $userRole = [
+            'SuperUser',
+            'Librarian',
+            'Cardholder'
+        ];
+
+        if ($this->$userRole == 'SuperUser' || 'Librarian'){
         return UserResource::collection(User::all());
+        } else {
+            return 'Not authorized';
+        }
     }
 
     /**
@@ -43,6 +54,8 @@ class UserController extends Controller
 
         $user = User::create([
             'name' => $faker->name,
+            'email' => $faker->email,
+            'password' => $faker->password
         ]);
         return new UserResource($user);
     }
@@ -79,7 +92,9 @@ class UserController extends Controller
     public function update(Request $request, User $user)
       {
         $user->update([
-            'name' => $request->input('name')
+            'name' => $request->input('name'),
+            'password' => $request->input('password'),
+            'email' => $request->input('email')
         ]);
 
         return new UserResource($user);

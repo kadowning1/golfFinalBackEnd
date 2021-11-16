@@ -16,7 +16,7 @@ class RoleSeeder extends Seeder
     {
         $userRole = [
             'SuperUser',
-            "Librarian",
+            'Librarian',
             'Cardholder'
         ];
 

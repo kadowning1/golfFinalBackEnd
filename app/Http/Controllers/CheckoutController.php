@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Checkout;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Resources\CheckoutResource;
 
@@ -39,9 +40,9 @@ class CheckoutController extends Controller
         $faker = \Faker\Factory::create(2);
 
         $checkout = Checkout::create([
-            'name' => $faker->name,
-            'description' => $faker->sentence,
-            'publication_year' => $faker->year,
+            'return_date' => $faker->dateTimeBetween($startDate='now', $endDate='+1 month', $timezone = null),
+            'checked_out' => $faker->randomDigit,
+            'user_id' => User::all()->random()->id
         ]);
         return new CheckoutResource($checkout);
     }
@@ -78,9 +79,9 @@ class CheckoutController extends Controller
     public function update(Request $request, Checkout $checkout)
     {
         $checkout->update([
-            'name' => $request->input('name'),
-            'description' => $request->input('description'),
-            'publication_year' => $request->input('publication_year')
+            'return_date' => $request->input('return_date'),
+            'checked_out' => $request->input('checked_out'),
+            'user_id' => $request->input('user_id')
         ]);
 
         return new CheckoutResource($checkout);

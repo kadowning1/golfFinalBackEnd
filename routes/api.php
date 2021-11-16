@@ -26,9 +26,10 @@ Route::middleware('auth:api')->prefix('v1')->group(function () {
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
+    Route::get('/users', [UserController::class, 'index']);
+
     Route::apiResource('/authors', AuthorController::class);
     Route::apiResource('/books', BooksController::class);
-    Route::apiResource('/user', UserController::class);
     Route::apiResource('/checkout', CheckoutController::class);
 
     // Route::get('/authors/{author}', [AuthorController::class, 'show']
@@ -37,9 +38,10 @@ Route::middleware('auth:api')->prefix('v1')->group(function () {
     // );
 });
 
-// Route::get('/user', function (Request $request) {
-//     return $request->user()->toArray();
-// });
+// Route::apiResource('/user', UserController::class);
+Route::get('/user', function (Request $request) {
+    return $request->user()->toArray();
+});
 
 // Route::get('/test', function (Request $request) {
 //     return 'Auth Passed';

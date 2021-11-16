@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Models\User;
 
 class CheckoutResource extends JsonResource
 {
@@ -18,7 +19,7 @@ class CheckoutResource extends JsonResource
             'id' => (string)$this->id,
             'type' => 'Checkout',
             'attributes' => [
-                'name' => $this->name,
+                'user_id' => User::all()->random()->id,
                 'checked_out' => $this->checked_out,
                 'return_date' => $this->return_date,
                 'created_at' => $this->created_at,
