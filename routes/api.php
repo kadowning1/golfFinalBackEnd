@@ -18,40 +18,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
 Route::middleware('auth:api')->prefix('v1')->group(function () {
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
-    Route::get('/users', [UserController::class, 'index']);
-    Route::get('/books', [BooksController::class, 'index']);
+    // Route::get('/users', [UserController::class, 'index']);
 
     Route::apiResource('/authors', AuthorController::class);
-    // Route::apiResource('/books', BooksController::class);
+    Route::apiResource('/books', BooksController::class);
     Route::apiResource('/checkout', CheckoutController::class);
-
-    // Route::get('/authors/{author}', [AuthorController::class, 'show']
-    // );
-    // Route::get('/authors', [AuthorController::class, 'index']
-    // );
-    // Route::get('/user', function (Request $request) {
-    //     return $request->user()->toArray();
-    // });
+    Route::apiResource('/users', UserController::class);
 });
-
-// Route::apiResource('/user', UserController::class);
 
 Route::get('/books', function (Request $request) {
     return $request->user()->toArray();
 });
 
-// Route::get('/test', function (Request $request) {
-//     return 'Auth Passed';
-// });
-
 Route::get('/Jacob', function (Request $request) {
     return 'Jacob is very helpful';
+});
+
+Route::get('/Chase', function (Request $request) {
+    return 'No, I dont need a Jacob Route';
 });

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Checkout;
 use Illuminate\Http\Request;
+use App\Models\BookAuthor;
 use App\Http\Resources\BooksResource;
 
 class BooksController extends Controller
@@ -42,7 +44,7 @@ class BooksController extends Controller
             'name' => $faker->name,
             'description' => $faker->sentence,
             'publication_year' => $faker->year,
-            'isbn' => $faker->isbn13,
+            'isbn' => (string)$faker->isbn13,
             'checked_out' => false
         ]);
         return new BooksResource($book);
@@ -98,6 +100,22 @@ class BooksController extends Controller
      */
     public function destroy(Book $book)
     {
+        $bookAuthors = BookAuthor::all()->where('book_id', $book->id)->toArray();
+        // dd($bookAuthors);
+        foreach ($bookAuthors as $id => $bookAuthor) {
+            $bookAuthorDelete = BookAuthor::find($bookAuthor['id']);
+            // dd($bookAuthorDelete);
+            $bookAuthorDelete->delete();
+        }
+
+        $checkouts = Checkout::all()->where('user_id', $book->id)->toArray();
+        if (count($checkouts) > 0) {
+            // dd($checkouts);
+            foreach ($checkouts as $id => $CheckoutItem) {
+                $checkout = Checkout::find($CheckoutItem['id']);
+                $checkout->delete();
+            }
+        }
         $book->delete();
         return response(null, 204);
     }

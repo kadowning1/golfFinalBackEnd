@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\UserRole;
+use App\Models\Checkout;
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
 use App\Http\Requests\UserRequest;
@@ -108,6 +109,26 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        $userRoles = UserRole::all()->where('user_id', $user->id)->toArray();
+        // dd($userRoles);
+        if (count($userRoles) > 0) {
+
+            foreach ($userRoles as $id => $userRoleItem) {
+                //     // dd($authorBook);
+                $user_role = UserRole::find($userRoleItem['id']);
+                $user_role->delete();
+            }
+        }
+
+        $checkouts = Checkout::all()->where('user_id', $user->id)->toArray();
+        if (count($checkouts) > 0) {
+
+            foreach ($checkouts as $id => $CheckoutItem) {
+                //     // dd($authorBook);
+                $checkout = Checkout::find($CheckoutItem['id']);
+                $checkout->delete();
+            }
+        }
         $user->delete();
         return response(null, 204);
     }
