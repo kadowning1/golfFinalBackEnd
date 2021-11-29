@@ -24,20 +24,20 @@ Route::middleware('auth:api')->prefix('v1')->group(function () {
     });
     // Route::get('/users', [UserController::class, 'index']);
 
-    Route::apiResource('/authors', AuthorController::class);
-    Route::apiResource('/books', BooksController::class);
-    Route::apiResource('/checkout', CheckoutController::class);
+    // Route::apiResource('/authors', AuthorController::class);
+    // Route::apiResource('/books', BooksController::class);
+    // Route::apiResource('/checkout', CheckoutController::class);
     Route::apiResource('/users', UserController::class);
 });
 
-Route::get('/books', function (Request $request) {
-    return $request->user()->toArray();
-});
+// Route::get('/books', function (Request $request) {
+//     return $request->user()->toArray();
+// });
 
-Route::get('/Jacob', function (Request $request) {
-    return 'Jacob is very helpful';
-});
+// Route::get('/Jacob', function (Request $request) {
+//     return 'Jacob is very helpful';
+// });
 
-Route::get('/Chase', function (Request $request) {
-    return 'No, I dont need a Jacob Route';
-});
+// Route::get('/Chase', function (Request $request) {
+//     return 'No, I dont need a Jacob Route';
+// });

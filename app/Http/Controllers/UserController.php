@@ -118,15 +118,6 @@ class UserController extends Controller
             }
         }
 
-        $checkouts = Checkout::all()->where('user_id', $user->id)->toArray();
-        if (count($checkouts) > 0) {
-
-            foreach ($checkouts as $id => $CheckoutItem) {
-                //     // dd($authorBook);
-                $checkout = Checkout::find($CheckoutItem['id']);
-                $checkout->delete();
-            }
-        }
         $user->delete();
         return response(null, 204);
     }
