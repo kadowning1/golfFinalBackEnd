@@ -3,11 +3,11 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Teamgroups;
-use App\Models\Groups;
-use App\Models\Teams;
+use App\Models\TeamGroup;
+use App\Models\Group;
+use App\Models\Team;
 
-class TeamgroupsSeeder extends Seeder
+class TeamGroupSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,7 +16,7 @@ class TeamgroupsSeeder extends Seeder
      */
      public function run()
      {
-        Teamgroups::factory(100)->create();
+        TeamGroup::factory(100)->create();
         // Teamgroups::factory(100)->create();
         //  $users = Groups::all()->toArray();
         //  for ($i=0; $i < count($users); $i++) {

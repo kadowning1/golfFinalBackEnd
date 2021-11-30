@@ -3,19 +3,19 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Groups;
+use App\Models\Group;
 
-class GroupsSeeder extends Seeder
+class GroupSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      *
      * @return void
      */
-   
+
     public function run()
     {
-        Groups::factory(20)->create();
+        Group::factory(20)->create();
         // $userRole = [
         //     'SuperUser',
         //     'Librarian',

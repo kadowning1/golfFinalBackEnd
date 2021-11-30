@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Groups;
+use App\Models\Group;
 use Illuminate\Http\Request;
 
-class GroupsController extends Controller
+class GroupController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class GroupsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Groups  $groups
+     * @param  \App\Models\Group  $group
      * @return \Illuminate\Http\Response
      */
-    public function show(Groups $groups)
+    public function show(Group $group)
     {
         //
     }
@@ -52,10 +52,10 @@ class GroupsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Groups  $groups
+     * @param  \App\Models\Group  $group
      * @return \Illuminate\Http\Response
      */
-    public function edit(Groups $groups)
+    public function edit(Group $group)
     {
         //
     }
@@ -64,10 +64,10 @@ class GroupsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Groups  $groups
+     * @param  \App\Models\Group  $group
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Groups $groups)
+    public function update(Request $request, Group $group)
     {
         //
     }
@@ -75,10 +75,10 @@ class GroupsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Groups  $groups
+     * @param  \App\Models\Group  $group
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Groups $groups)
+    public function destroy(Group $group)
     {
         //
     }

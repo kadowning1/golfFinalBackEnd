@@ -3,10 +3,10 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Groups;
-use App\Models\Teams;
+use App\Models\Group;
+use App\Models\Team;
 
-class TeamgroupsFactory extends Factory
+class TeamGroupFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -16,8 +16,8 @@ class TeamgroupsFactory extends Factory
     public function definition()
     {
         return [
-            'groups_id' => Groups::all()->random()->id,
-            'teams_id' => Teams::all()->random()->id
+            'group_id' => Group::all()->random()->id,
+            'team_id' => Team::all()->random()->id
          ];
     }
 }

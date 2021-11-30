@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Teams;
+use App\Models\Team;
 
-class TeamsSeeder extends Seeder
+class TeamSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,13 +14,13 @@ class TeamsSeeder extends Seeder
      */
      public function run()
      {
-        Teams::factory(20)->create();
+        Team::factory(20)->create();
         //  $userRole = [
         //      'SuperUser',
         //      'Librarian',
         //      'Cardholder'
         //  ];
- 
+
         //  for ($i = 0; $i < count($userRole); $i++) {
         //      $role = new Teams;
         //      $role->name = $userRole[$i];

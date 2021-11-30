@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class TeamsFactory extends Factory
+class TeamFactory extends Factory
 {
     /**
      * Define the model's default state.

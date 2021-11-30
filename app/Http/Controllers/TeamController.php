@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\teamgroups;
+use App\Models\Team;
 use Illuminate\Http\Request;
 
-class TeamgroupsController extends Controller
+class TeamController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class TeamgroupsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\teamgroups  $teamgroups
+     * @param  \App\Models\Team  $team
      * @return \Illuminate\Http\Response
      */
-    public function show(teamgroups $teamgroups)
+    public function show(Team $team)
     {
         //
     }
@@ -52,10 +52,10 @@ class TeamgroupsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\teamgroups  $teamgroups
+     * @param  \App\Models\Team  $team
      * @return \Illuminate\Http\Response
      */
-    public function edit(teamgroups $teamgroups)
+    public function edit(Team $team)
     {
         //
     }
@@ -64,10 +64,10 @@ class TeamgroupsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\teamgroups  $teamgroups
+     * @param  \App\Models\Team  $team
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, teamgroups $teamgroups)
+    public function update(Request $request, Team $team)
     {
         //
     }
@@ -75,10 +75,10 @@ class TeamgroupsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\teamgroups  $teamgroups
+     * @param  \App\Models\Team  $team
      * @return \Illuminate\Http\Response
      */
-    public function destroy(teamgroups $teamgroups)
+    public function destroy(Team $team)
     {
         //
     }
