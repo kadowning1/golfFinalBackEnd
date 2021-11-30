@@ -23,6 +23,7 @@ class UserFactory extends Factory
             // 'email_verified_at' => now(),
             // 'password' => Hash::check('plain-text', $hashedPassword),
             'password' => $hashedPassword,
+            'age' => $this->faker->randomDigit(),
             'remember_token' => Str::random(10),
         ];
     }

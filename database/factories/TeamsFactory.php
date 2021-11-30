@@ -3,10 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Role;
-use App\Models\User;
 
-class UserRoleFactory extends Factory
+class TeamsFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -15,9 +13,9 @@ class UserRoleFactory extends Factory
      */
     public function definition()
     {
-        //  return [
-        //    'user_id' => User::all()->random()->id,
-        //    'roles_id' => Role::all()->random()->id
-        // ];
+        return [
+            'name' => $this->faker->name,
+            'creator' => $this->faker->name
+        ];
     }
 }
