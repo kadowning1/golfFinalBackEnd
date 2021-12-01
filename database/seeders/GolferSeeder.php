@@ -20,5 +20,11 @@ class GolferSeeder extends Seeder
         ])->get('https://golf-leaderboard-data.p.rapidapi.com/leaderboard/25');
         // response()->json($response);
         dd($response->json());
+
+        // create migration
+        // create model
+        // for loop to save data using eloquent in the db
+        // comment it out from your seeders once you have the data - so we dont have duplicates - and so we dont call the api so many times
+        // golfer controller that pulls the date from your db into react
     }
 }

@@ -15,6 +15,12 @@ class CreateGolfersTable extends Migration
     {
         Schema::create('golfers', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->integer('creator');
+            $table->string('name');
+            $table->integer('creator');
+            $table->string('name');
+            $table->string('creator');
             $table->timestamps();
         });
     }
