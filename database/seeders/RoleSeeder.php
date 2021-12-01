@@ -14,17 +14,17 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        // $userRole = [
-        //     'SuperUser',
-        //     'Librarian',
-        //     'Cardholder'
-        // ];
+        $userRole = [
+            'SuperUser',
+            'Admin',
+            'User'
+        ];
 
-        // for ($i = 0; $i < count($userRole); $i++) {
-        //     $role = new Role;
-        //     $role->label = $userRole[$i];
-        //     $role->save();
-        //     # code...
-        // }
+        for ($i = 0; $i < count($userRole); $i++) {
+            $role = new Role;
+            $role->label = $userRole[$i];
+            $role->save();
+            # code...
+        }
     }
 }

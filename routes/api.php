@@ -1,9 +1,7 @@
 <?php
 
-use App\Http\Controllers\AuthorController;
-use App\Http\Controllers\BooksController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\CheckoutController;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,21 +21,12 @@ Route::middleware('auth:api')->prefix('v1')->group(function () {
         return $request->user();
     });
     // Route::get('/users', [UserController::class, 'index']);
-
+    Route::get('/register', [UserController::class, 'create']);
+    Route::get('/login', [UserController::class, 'login']);
+    Route::get('/logout', [UserController::class, 'logout']);
     // Route::apiResource('/authors', AuthorController::class);
     // Route::apiResource('/books', BooksController::class);
     // Route::apiResource('/checkout', CheckoutController::class);
     Route::apiResource('/users', UserController::class);
 });
 
-// Route::get('/books', function (Request $request) {
-//     return $request->user()->toArray();
-// });
-
-// Route::get('/Jacob', function (Request $request) {
-//     return 'Jacob is very helpful';
-// });
-
-// Route::get('/Chase', function (Request $request) {
-//     return 'No, I dont need a Jacob Route';
-// });

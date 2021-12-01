@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\UserRole;
-use App\Models\Checkout;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
 use App\Http\Requests\UserRequest;
@@ -23,7 +25,7 @@ class UserController extends Controller
         $userRoles = UserRole::with('role')->where('user_id', $user->id)->get();
         $userRole = $userRoles[0];
 
-        if ($userRole->role->label == 'Cardholder') {
+        if ($userRole->role->label == 'User') {
             return 'Not authorized';
         } else {
             return UserResource::collection(User::all());
@@ -35,9 +37,29 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string',
+            'email' => 'required|email|max:64',
+            'password' => 'required|string|min:8',
+            'age' => 'integer'
+        ]);
+        if($validator->fails()){
+            return response(['message' => 'Validation errors', 'errors' =>  $validator->errors(), 'status' => false], 422);
+        }
+
+        $input = $request->all();
+        $input['password'] = Hash::make($input['password']);
+
+        // Creating new user
+        $user = User::create($input);
+
+        /**Take note of this: Your user authentication access token is generated here **/
+        $data['token'] =  $user->createToken('mgp')->accessToken;
+        $data['user_data'] = $user;
+
+        return response(['data' => $data, 'message' => 'Account created successfully!', 'status' => true]);
     }
 
     /**
@@ -54,7 +76,8 @@ class UserController extends Controller
         $user = User::create([
             'name' => $faker->name,
             'email' => $faker->email,
-            'password' => $faker->password
+            'password' => $faker->password,
+            'age' => $faker->integer
         ]);
         return new UserResource($user);
     }
@@ -120,5 +143,28 @@ class UserController extends Controller
 
         $user->delete();
         return response(null, 204);
+    }
+
+
+    public function login(Request $request)
+    {
+    }
+
+    public function logout(Request $request)
+    { {
+            if (Auth::user()) {
+                $user = Auth::user()->token();
+                $user->revoke();
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Logout successfully',
+                ]);
+            } else {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Unable to Logout',
+                ]);
+            }
+        }
     }
 }
