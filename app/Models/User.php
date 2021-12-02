@@ -23,8 +23,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'age'
     ];
-    
+
      public function userRole()
     {
         return $this->hasOne(UserRole::class);

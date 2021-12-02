@@ -21,15 +21,16 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $user = $request->user();
-        $userRoles = UserRole::with('role')->where('user_id', $user->id)->get();
-        $userRole = $userRoles[0];
+        // $user = $request->user();
+        // $userRoles = UserRole::with('role')->where('user_id', $user->id)->get();
+        // $userRole = $userRoles[0];
 
-        if ($userRole->role->label == 'User') {
-            return 'Not authorized';
-        } else {
-            return UserResource::collection(User::all());
-        }
+        // if ($userRole->role->label == 'User') {
+        //     return 'Not authorized';
+        // } else {
+        //     return UserResource::collection(User::all());
+        // }
+        return UserResource::collection(User::all());
     }
 
     /**
@@ -116,7 +117,8 @@ class UserController extends Controller
         $user->update([
             'name' => $request->input('name'),
             'password' => $request->input('password'),
-            'email' => $request->input('email')
+            'email' => $request->input('email'),
+            'age' => $request->input('age')
         ]);
 
         return new UserResource($user);
@@ -148,6 +150,37 @@ class UserController extends Controller
 
     public function login(Request $request)
     {
+    }
+
+    public function register(Request $request)
+    {
+      $validator = Validator::make($request->all(), [
+        'name' => 'required',
+        'email' => 'required|email|unique:users',
+        'password' => 'required',
+        'age' => 'required'
+      ]);
+      if ($validator->fails()) {
+        return response()->json([
+          'success' => false,
+          'message' => $validator->errors(),
+        ], 401);
+      }
+      $input = $request->all();
+      $input['password']=bcrypt($input['password']);
+      $input['status']=true;
+      $input['is_active']=true;
+      $user = User::create($input);
+      $success['token'] = $user->createToken('appToken')->accessToken;
+      $event = "register";
+      $createdAt = date("l jS \of F Y h:i:s A");
+      return response()->json([
+        'success' => true,
+        'access_token' => $success,
+        'user' => $user,
+        'event' => $event,
+        'created_at' => $createdAt
+      ]);
     }
 
     public function logout(Request $request)

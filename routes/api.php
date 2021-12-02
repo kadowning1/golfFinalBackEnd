@@ -21,12 +21,9 @@ Route::middleware('auth:api')->prefix('v1')->group(function () {
         return $request->user();
     });
     // Route::get('/users', [UserController::class, 'index']);
-    Route::get('/register', [UserController::class, 'create']);
-    Route::get('/login', [UserController::class, 'login']);
+    // Route::get('/login', [UserController::class, 'login']);
     Route::get('/logout', [UserController::class, 'logout']);
-    // Route::apiResource('/authors', AuthorController::class);
-    // Route::apiResource('/books', BooksController::class);
-    // Route::apiResource('/checkout', CheckoutController::class);
-    Route::apiResource('/users', UserController::class);
+    // Route::apiResource('/users', UserController::class);
 });
 
+Route::post('/register', [UserController::class, 'register']);
