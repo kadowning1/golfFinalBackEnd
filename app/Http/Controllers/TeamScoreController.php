@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Group;
+use App\Models\TeamScore;
 use Illuminate\Http\Request;
 
-class GroupController extends Controller
+class TeamScoreController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,13 +22,9 @@ class GroupController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        $user = $request->user();
-        $group = new Group;
-        $group->name = $request->input('name');
-        $group->creator = $request->user()->id;
-        $group->save();
+        //
     }
 
     /**
@@ -45,10 +41,10 @@ class GroupController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Group  $group
+     * @param  \App\Models\TeamScore  $teamScore
      * @return \Illuminate\Http\Response
      */
-    public function show(Group $group)
+    public function show(TeamScore $teamScore)
     {
         //
     }
@@ -56,10 +52,10 @@ class GroupController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Group  $group
+     * @param  \App\Models\TeamScore  $teamScore
      * @return \Illuminate\Http\Response
      */
-    public function edit(Group $group)
+    public function edit(TeamScore $teamScore)
     {
         //
     }
@@ -68,10 +64,10 @@ class GroupController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Group  $group
+     * @param  \App\Models\TeamScore  $teamScore
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Group $group)
+    public function update(Request $request, TeamScore $teamScore)
     {
         //
     }
@@ -79,10 +75,10 @@ class GroupController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Group  $group
+     * @param  \App\Models\TeamScore  $teamScore
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Group $group)
+    public function destroy(TeamScore $teamScore)
     {
         //
     }

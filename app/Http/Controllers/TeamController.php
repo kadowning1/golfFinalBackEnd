@@ -22,9 +22,13 @@ class TeamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $user = $request->user();
+        $team = new Team;
+        $team->name = $request->input('name');
+        $team->creator = $request->user()->id;
+        $team->save();
     }
 
     /**
@@ -82,4 +86,5 @@ class TeamController extends Controller
     {
         //
     }
+
 }

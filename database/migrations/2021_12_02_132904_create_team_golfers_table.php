@@ -15,6 +15,20 @@ class CreateTeamGolfersTable extends Migration
     {
         Schema::create('team_golfers', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('team_id');
+            $table->foreign('team_id')
+                ->references('id')
+                ->on('teams')
+                ->cascade('delete');
+
+            // this does the same thing as the block below
+            // $table->foreignId('book_id')->constrained();
+            $table->unsignedBigInteger('golfer_id');
+            $table->foreign('golfer_id')
+                ->references('id')
+                ->on('golfers')
+                ->cascade('delete');
+
             $table->timestamps();
         });
     }
