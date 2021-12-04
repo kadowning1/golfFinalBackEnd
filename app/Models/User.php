@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 
 use App\Models\UserRole;
+use App\Models\Group;
+use App\Models\Team;
 
 class User extends Authenticatable
 {
@@ -29,6 +31,16 @@ class User extends Authenticatable
      public function userRole()
     {
         return $this->hasOne(UserRole::class);
+    }
+
+    public function userTeam()
+    {
+        return $this->hasOne(Team::class);
+    }
+
+    public function userGroup()
+    {
+        return $this->belongsTo(Group::class);
     }
 
     /**

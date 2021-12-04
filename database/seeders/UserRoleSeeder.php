@@ -25,6 +25,6 @@ class UserRoleSeeder extends Seeder
         //     $userRole->role_id = $role->id;
         //     $userRole->save();
         // }
-        // UserRole::factory(10)->create();
+        UserRole::factory(10)->create();
     }
 }
