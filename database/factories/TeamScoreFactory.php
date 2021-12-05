@@ -14,7 +14,9 @@ class TeamScoreFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'datetime' => $this->faker->dateTime(),
+            'score' => $this->faker->randomDigit(),
+            'team_id' => $this->faker->randomDigit(),
         ];
     }
 }

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Deadline;
 
 class DeadlineSeeder extends Seeder
 {
@@ -13,6 +14,6 @@ class DeadlineSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Deadline::factory(10)->create();
     }
 }

@@ -14,7 +14,9 @@ class DeadlineFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'team_id' => $this->faker->randomDigit(),
+            'deadline_start' => $this->faker->dateTime(),
+            'deadline_end' => $this->faker->dateTime(),
         ];
     }
 }

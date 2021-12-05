@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Deadline extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['team_id', 'deadline_start', 'deadline_end'];
 }

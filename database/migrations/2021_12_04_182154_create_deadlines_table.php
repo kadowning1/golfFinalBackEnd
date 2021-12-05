@@ -15,7 +15,7 @@ class CreateDeadlinesTable extends Migration
     {
         Schema::create('deadlines', function (Blueprint $table) {
             $table->id();
-            $table->id('team_id');
+            $table->integer('team_id');
             $table->dateTime('deadline_start');
             $table->dateTime('deadline_end');
             $table->timestamps();

@@ -22,6 +22,9 @@ class DatabaseSeeder extends Seeder
 
         //need to seed db
         $this->call(GolferSeeder::class);
+        $this->call(TeamGolferSeeder::class);
+        $this->call(TeamScoreSeeder::class);
+        $this->call(DeadlineSeeder::class);
 
     }
 }

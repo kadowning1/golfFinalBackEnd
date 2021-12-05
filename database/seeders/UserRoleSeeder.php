@@ -16,15 +16,15 @@ class UserRoleSeeder extends Seeder
      */
     public function run()
     {
-        // $users = User::all()->toArray();
-        // for ($i=0; $i < count($users); $i++) {
-        //     # code...
-        //     $role = Role::all()->random();
-        //     $userRole = new UserRole();
-        //     $userRole->user_id = $users[$i]['id'];
-        //     $userRole->role_id = $role->id;
-        //     $userRole->save();
-        // }
-        UserRole::factory(10)->create();
+        $users = User::all()->toArray();
+        for ($i=0; $i < count($users); $i++) {
+            # code...
+            $role = Role::all()->random();
+            $userRole = new UserRole();
+            $userRole->user_id = $users[$i]['id'];
+            $userRole->role_id = $role->id;
+            $userRole->save();
+        }
+        // UserRole::factory(10)->create();
     }
 }

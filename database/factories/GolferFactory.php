@@ -14,7 +14,11 @@ class GolferFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name(),
+            'score' => $this->faker->randomDigit(),
+            'country' => $this->faker->country(),
+            'position' => $this->faker->randomDigit(),
+            'total_to_par' => $this->faker->randomDigit()
         ];
     }
 }

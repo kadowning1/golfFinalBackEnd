@@ -82,4 +82,24 @@ class DeadlineController extends Controller
     {
         //
     }
+
+
+    public function setDeadline(Deadline $deadline)
+    {
+        // Run once per week on Monday at 1 PM...
+    $deadline->call(function () {
+        //
+    })->weekly()->thursday()->at('1:00');
+        //
+    }
+
+    public function endDeadline(Deadline $deadline)
+    {
+        // Run once per week on Monday at 1 PM...
+    $deadline->call(function () {
+        //
+    })->weekly()->monday()->at('1:00');
+        //
+    }
+
 }
