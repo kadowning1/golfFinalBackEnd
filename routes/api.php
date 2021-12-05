@@ -26,7 +26,8 @@ Route::middleware('auth:api')->prefix('v1')->group(function () {
     // Route::get('/login', [UserController::class, 'login']);
     Route::get('/logout', [UserController::class, 'logout']);
     Route::post('/submitteam', [TeamController::class, 'create']);
-    Route::post('/submitgroup', [GroupController::class, 'create']);
+    Route::post('/joingroup', [GroupController::class, 'join']);
+    Route::post('/creategroup', [GroupController::class, 'create']);
     // Route::apiResource('/users', UserController::class);
 });
 
