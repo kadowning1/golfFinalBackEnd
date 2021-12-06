@@ -10,7 +10,7 @@ class Golfer extends Model
 {
     use HasFactory;
 
-    // protected $fillable = ['user_id', 'role_id'];
+    protected $fillable = ['golfer_id', 'team_id'];
 
     public function userRole()
     {

@@ -86,4 +86,10 @@ class GroupController extends Controller
     {
         //
     }
+
+
+    public function join(Group $group)
+    {
+        //
+    }
 }

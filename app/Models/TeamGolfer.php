@@ -13,7 +13,7 @@ class TeamGolfer extends Model
 
     protected $table = 'team_golfers';
 
-    protected $fillable = ['team_id', 'golfers_id'];
+    protected $fillable = ['team_id', 'golfer_id'];
 
     public function team()
     {

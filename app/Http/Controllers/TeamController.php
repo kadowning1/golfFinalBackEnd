@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Team;
 use Illuminate\Http\Request;
+use App\Http\Resources\TeamsResource;
 
 class TeamController extends Controller
 {
@@ -86,5 +87,7 @@ class TeamController extends Controller
     {
         //
     }
+
+
 
 }

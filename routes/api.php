@@ -3,6 +3,7 @@
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\GolferController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,13 +23,19 @@ Route::middleware('auth:api')->prefix('v1')->group(function () {
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
-    // Route::get('/users', [UserController::class, 'index']);
-    // Route::get('/login', [UserController::class, 'login']);
+
     Route::get('/logout', [UserController::class, 'logout']);
-    Route::post('/submitteam', [TeamController::class, 'create']);
-    Route::post('/joingroup', [GroupController::class, 'join']);
+
+    //group functions
+    // Route::post('/joingroup', [GroupController::class, 'join']);
     Route::post('/creategroup', [GroupController::class, 'create']);
+
+
+    //team functions
+    Route::post('/submitteam', [TeamController::class, 'create']);
     Route::post('/addgolfer', [GolferController::class, 'addToTeam']);
+    Route::post('/removegolfer', [GolferController::class, 'removeFromTeam']);
+    Route::get('/getteam', [GolferController::class, 'show']);
     // Route::apiResource('/users', UserController::class);
 });
 
