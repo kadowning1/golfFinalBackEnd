@@ -82,4 +82,13 @@ class GolferController extends Controller
     {
         //
     }
+
+    public function addToTeam(Request $request)
+    {
+        $user = $request->user();
+        $teamgolfer = new Golfer;
+        $teamgolfer->golfer_id = $teamgolfer->id;
+        $teamgolfer->team_id = $request->team_id;
+        $teamgolfer->save();
+    }
 }

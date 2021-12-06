@@ -28,6 +28,7 @@ Route::middleware('auth:api')->prefix('v1')->group(function () {
     Route::post('/submitteam', [TeamController::class, 'create']);
     Route::post('/joingroup', [GroupController::class, 'join']);
     Route::post('/creategroup', [GroupController::class, 'create']);
+    Route::post('/addgolfer', [GolferController::class, 'addToTeam']);
     // Route::apiResource('/users', UserController::class);
 });
 
