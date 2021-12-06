@@ -95,8 +95,8 @@ class GolferController extends Controller
         Log::debug($request);
         $user = $request->user();
         Log::debug($user);
-        $teamgolfer = new Golfer;
-        $teamgolfer->golfer_id = $teamgolfer->id;
+        $teamgolfer = new TeamGolfer();
+        $teamgolfer->golfer_id = $request->golfer_id;
         $teamgolfer->team_id = $request->team_id;
         $teamgolfer->save();
     }

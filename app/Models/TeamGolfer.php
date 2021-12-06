@@ -20,7 +20,7 @@ class TeamGolfer extends Model
         return $this->belongsTo(Team::class);
     }
 
-    public function role()
+    public function golfer()
     {
         return $this->belongsTo(Golfer::class);
     }

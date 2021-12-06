@@ -88,8 +88,10 @@ class GroupController extends Controller
     }
 
 
-    public function join(Group $group)
+    public function join(Request $request)
     {
-        //
+        $group = $request->user();
+        $groupname = Group::where('name', '=', $group->name);
+        $groupname->save('name');
     }
 }

@@ -12,8 +12,8 @@ class TeamScore extends Model
 
     protected $table = 'team_scores';
 
-    public function teamScore()
+    public function team()
     {
-        return $this->hasOne(Team::class);
+        return $this->belongsTo(Team::class);
     }
 }

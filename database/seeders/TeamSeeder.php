@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Team;
 
+
 class TeamSeeder extends Seeder
 {
     /**
@@ -14,6 +15,11 @@ class TeamSeeder extends Seeder
      */
      public function run()
      {
-        Team::factory(20)->create();
-     }
+        // Team::factory(10)->create();
+        for ($i=1; $i <= 10; $i++) {
+            Team::create( [
+                'name' => '',
+                'user_id' => $i,
+            ]);
+     }}
 }

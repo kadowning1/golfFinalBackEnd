@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UserRoleSeeder::class);
         $this->call(GroupSeeder::class);
         $this->call(TeamSeeder::class);
-        $this->call(TeamGroupSeeder::class);
+
 
         //need to seed db
         $this->call(GolferSeeder::class);

@@ -10,10 +10,10 @@ class Golfer extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['golfer_id', 'team_id'];
+    protected $fillable = ['name', 'score', 'country', 'position', 'total_to_par'];
 
-    public function userRole()
+    public function teamGolfer()
     {
-        return $this->hasOne(TeamGolfer::class);
+        return $this->hasMany(TeamGolfer::class);
     }
 }

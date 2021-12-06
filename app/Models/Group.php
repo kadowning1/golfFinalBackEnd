@@ -4,22 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\TeamGroup;
+
 use App\Models\User;
+use App\Models\Team;
 
 class Group extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'creator'];
+    protected $fillable = ['name', 'user_id'];
 
-    public function groupTeam()
+    public function teams()
     {
-        return $this->hasOne(TeamGroup::class);
+        return $this->hasMany(Team::class);
     }
 
-    public function groupUser()
+    public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 }

@@ -4,35 +4,36 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\TeamGroup;
+
 use App\Models\TeamGolfer;
 use App\Models\TeamScore;
 use App\Models\User;
+use App\Models\Group;
 
 
 class Team extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'creator'];
+    protected $fillable = ['name', 'user_id'];
 
-    public function teamGroup()
+    public function group()
     {
-        return $this->hasOne(TeamGroup::class);
+        return $this->belongsTo(Group::class);
     }
 
-    public function teamGolferTeam()
+    public function teamGolfers()
     {
-        return $this->hasOne(TeamGolfer::class);
+        return $this->hasMany(TeamGolfer::class);
     }
 
-    public function teamUser()
+    public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function teamScore()
     {
-        return $this->belongsTo(TeamScore::class);
+        return $this->hasOne(TeamScore::class);
     }
 }

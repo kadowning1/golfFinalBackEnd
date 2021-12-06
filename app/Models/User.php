@@ -28,19 +28,19 @@ class User extends Authenticatable
         'age'
     ];
 
-     public function userRole()
+     public function userRoles()
     {
-        return $this->hasOne(UserRole::class);
+        return $this->hasMany(UserRole::class);
     }
 
-    public function userTeam()
+    public function team()
     {
         return $this->hasOne(Team::class);
     }
 
-    public function userGroup()
+    public function group()
     {
-        return $this->belongsTo(Group::class);
+        return $this->hasOne(Group::class);
     }
 
     /**

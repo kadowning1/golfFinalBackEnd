@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Team;
 use App\Models\UserRole;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -30,7 +31,8 @@ class UserController extends Controller
         // } else {
         //     return UserResource::collection(User::all());
         // }
-        return UserResource::collection(User::all());
+        // return UserResource::collection(User::all());
+        return User::with(['team.teamGolfers.golfer'])->where('id', $request->user()->id)->get();
     }
 
     /**
@@ -40,27 +42,7 @@ class UserController extends Controller
      */
     public function create(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string',
-            'email' => 'required|email|max:64',
-            'password' => 'required|string|min:8',
-            'age' => 'integer'
-        ]);
-        if($validator->fails()){
-            return response(['message' => 'Validation errors', 'errors' =>  $validator->errors(), 'status' => false], 422);
-        }
 
-        $input = $request->all();
-        $input['password'] = Hash::make($input['password']);
-
-        // Creating new user
-        $user = User::create($input);
-
-        /**Take note of this: Your user authentication access token is generated here **/
-        $data['token'] =  $user->createToken('mgp')->accessToken;
-        $data['user_data'] = $user;
-
-        return response(['data' => $data, 'message' => 'Account created successfully!', 'status' => true]);
     }
 
     /**
@@ -174,10 +156,13 @@ class UserController extends Controller
       $success['token'] = $user->createToken('appToken')->accessToken;
       $event = "register";
       $createdAt = date("l jS \of F Y h:i:s A");
+      $team= Team::create(['name' => '', 'user_id' => $user->id]);
+
       return response()->json([
         'success' => true,
         'access_token' => $success,
         'user' => $user,
+        'team' => $team,
         'event' => $event,
         'created_at' => $createdAt
       ]);
