@@ -21,6 +21,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:api')->prefix('v1')->group(function () {
+
+    //user functions
     Route::get('/user', [UserController::class, 'index']);
     Route::get('/logout', [UserController::class, 'logout']);
 

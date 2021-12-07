@@ -20,6 +20,7 @@ class TeamSeeder extends Seeder
             Team::create( [
                 'name' => '',
                 'user_id' => $i,
+                'group_id' => $i,
             ]);
      }}
 }

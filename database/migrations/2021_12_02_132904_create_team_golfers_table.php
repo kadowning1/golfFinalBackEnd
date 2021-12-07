@@ -20,9 +20,6 @@ class CreateTeamGolfersTable extends Migration
                 ->references('id')
                 ->on('teams')
                 ->cascade('delete');
-
-            // this does the same thing as the block below
-            // $table->foreignId('book_id')->constrained();
             $table->unsignedBigInteger('golfer_id');
             $table->foreign('golfer_id')
                 ->references('id')

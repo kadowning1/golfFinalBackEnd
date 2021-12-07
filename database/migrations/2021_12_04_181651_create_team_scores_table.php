@@ -17,7 +17,7 @@ class CreateTeamScoresTable extends Migration
             $table->id();
             $table->dateTime('datetime');
             $table->integer('score');
-            $table->integer('team_id');
+            $table->foreignId('team_id')->constrained();
             $table->timestamps();
         });
     }

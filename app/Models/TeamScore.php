@@ -12,6 +12,8 @@ class TeamScore extends Model
 
     protected $table = 'team_scores';
 
+    protected $fillable = ['datetime', 'score', 'team_id'];
+
     public function team()
     {
         return $this->belongsTo(Team::class);

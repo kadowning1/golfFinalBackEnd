@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\User;
+use App\Models\Group;
 
 class TeamFactory extends Factory
 {
@@ -17,6 +18,7 @@ class TeamFactory extends Factory
         return [
             'name' => $this->faker->name,
             'user_id' => User::all()->random()->id,
+            'group_id' => Group::all()->random()->id,
         ];
     }
 }

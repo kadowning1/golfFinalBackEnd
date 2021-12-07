@@ -15,7 +15,7 @@ class Team extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'user_id'];
+    protected $fillable = ['name', 'user_id', 'group_id'];
 
     public function group()
     {
