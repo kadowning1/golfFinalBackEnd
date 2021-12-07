@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Group;
 use Illuminate\Http\Request;
+use App\Http\Resources\GroupsResource;
+use Illuminate\Database\Eloquent\Builder;
 
 class GroupController extends Controller
 {
@@ -14,7 +16,7 @@ class GroupController extends Controller
      */
     public function index()
     {
-        //
+        return GroupsResource::collection(Group::all());
     }
 
     /**
@@ -26,8 +28,8 @@ class GroupController extends Controller
     {
         $user = $request->user();
         $group = new Group;
-        $group->name = $request->input('name');
-        $group->creator = $request->user()->id;
+        $group->name = $user->input('name');
+        $group->user_id = $request->user()->id;
         $group->save();
     }
 
@@ -92,6 +94,6 @@ class GroupController extends Controller
     {
         $group = $request->user();
         $groupname = Group::where('name', '=', $group->name);
-        $groupname->save('name');
+        $groupname->save();
     }
 }

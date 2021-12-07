@@ -15,18 +15,10 @@ class GroupSeeder extends Seeder
 
     public function run()
     {
-        Group::factory(20)->create();
-        // $userRole = [
-        //     'SuperUser',
-        //     'Librarian',
-        //     'Cardholder'
-        // ];
-
-        // for ($i = 0; $i < count($userRole); $i++) {
-        //     $role = new Groups;
-        //     $role->name = $userRole[$i];
-        //     $role->save();
-        //     # code...
-        // }
-    }
+        for ($i=1; $i <= 10; $i++) {
+            Group::create( [
+                'name' => '',
+                'user_id' => $i,
+            ]);
+     }}
 }

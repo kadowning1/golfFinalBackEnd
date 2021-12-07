@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Team;
+use App\Models\Group;
 use App\Models\UserRole;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -22,16 +23,6 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        // $user = $request->user();
-        // $userRoles = UserRole::with('role')->where('user_id', $user->id)->get();
-        // $userRole = $userRoles[0];
-
-        // if ($userRole->role->label == 'User') {
-        //     return 'Not authorized';
-        // } else {
-        //     return UserResource::collection(User::all());
-        // }
-        // return UserResource::collection(User::all());
         return User::with(['team.teamGolfers.golfer'])->where('id', $request->user()->id)->get();
     }
 
@@ -53,16 +44,7 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        // return 'TEST';
-        $faker = \Faker\Factory::create(2);
 
-        $user = User::create([
-            'name' => $faker->name,
-            'email' => $faker->email,
-            'password' => $faker->password,
-            'age' => $faker->integer
-        ]);
-        return new UserResource($user);
     }
 
     /**
@@ -114,19 +96,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        $userRoles = UserRole::all()->where('user_id', $user->id)->toArray();
-        // dd($userRoles);
-        if (count($userRoles) > 0) {
 
-            foreach ($userRoles as $id => $userRoleItem) {
-                //     // dd($authorBook);
-                $user_role = UserRole::find($userRoleItem['id']);
-                $user_role->delete();
-            }
-        }
-
-        $user->delete();
-        return response(null, 204);
     }
 
 
@@ -157,12 +127,14 @@ class UserController extends Controller
       $event = "register";
       $createdAt = date("l jS \of F Y h:i:s A");
       $team= Team::create(['name' => '', 'user_id' => $user->id]);
+      $group = Group::create(['name' => '', 'user_id' => $user->id]);
 
       return response()->json([
         'success' => true,
         'access_token' => $success,
         'user' => $user,
         'team' => $team,
+        'group' => $group,
         'event' => $event,
         'created_at' => $createdAt
       ]);

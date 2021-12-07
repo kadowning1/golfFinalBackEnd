@@ -27,8 +27,8 @@ class TeamController extends Controller
     {
         $user = $request->user();
         $team = new Team;
-        $team->name = $request->input('name');
-        $team->creator = $request->user()->id;
+        $team->name = $user->input('name');
+        $team->user_id = $request->user()->id;
         $team->save();
     }
 

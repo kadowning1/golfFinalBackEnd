@@ -27,6 +27,7 @@ Route::middleware('auth:api')->prefix('v1')->group(function () {
     //group functions
     Route::post('/joingroup', [GroupController::class, 'join']);
     Route::post('/creategroup', [GroupController::class, 'create']);
+    Route::get('/group', [GroupController::class, 'index']);
 
 
     //team functions
