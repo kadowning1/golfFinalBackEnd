@@ -3,9 +3,10 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Team;
+use App\Models\User;
+use App\Models\Group;
 
-class TeamScoreFactory extends Factory
+class UserGroupFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -15,9 +16,8 @@ class TeamScoreFactory extends Factory
     public function definition()
     {
         return [
-            'datetime' => $this->faker->dateTime(),
-            'score' => $this->faker->randomDigit(),
-            'team_id' => Team::all()->random()->id,
+            'group_id' => Group::all()->random()->id,
+            'user_id' => User::all()->random()->id
         ];
     }
 }

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\TeamScore;
 
 class TeamScoreSeeder extends Seeder
 {
@@ -13,6 +14,6 @@ class TeamScoreSeeder extends Seeder
      */
     public function run()
     {
-        //
+        TeamScore::factory(10)->create();
     }
 }
