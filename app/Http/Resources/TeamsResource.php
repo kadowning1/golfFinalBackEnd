@@ -19,7 +19,8 @@ class TeamsResource extends JsonResource
             'type' => 'Teams',
             'attributes' => [
                 'name' => $this->name,
-                'creator' => $this->creator
+                'user_id' => $this->user_id,
+                'group_id' => $this->group_id
             ]
         ];
     }
