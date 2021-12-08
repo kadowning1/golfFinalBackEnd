@@ -25,15 +25,17 @@ class TeamController extends Controller
      */
     public function create(Request $request)
     {
-        $user = $request->user();
+        // $user = $request->user();
 
-        $group = new Team;
-        $group->name = $request->name;
-        $group->user_id = $request->user()->id;
-        $group->group_id = $request->user()->id;
-        $group->save();
+        // $group = new Team;
+        // $group->name = $request->name;
+        // $group->user_id = $request->user()->id;
+        // $group->group_id = $request->user()->id;
+        // $group->save();
 
-        return $group->toArray();
+        // return $group->toArray();
+
+
     }
 
     /**
@@ -91,7 +93,12 @@ class TeamController extends Controller
     {
         //
     }
-
+    public function update_team(Request $request)
+    {
+        $team = Team::find($request->team_id);
+        $team->name = $request->name;
+        $team->save();
+    }
 
 
 }

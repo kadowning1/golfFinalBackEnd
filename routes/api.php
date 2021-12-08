@@ -33,10 +33,10 @@ Route::middleware('auth:api')->prefix('v1')->group(function () {
 
 
     //team functions
-    Route::post('/submitteam', [TeamController::class, 'create']);
+    Route::post('/updateteam', [TeamController::class, 'update_team']);
     Route::get('/getteam', [TeamController::class, 'show']);
-    Route::post('/addgolfer', [GolferController::class, 'addToTeam']);
-    Route::post('/removegolfer', [GolferController::class, 'removeFromTeam']);
+    Route::post('/addToTeam', [GolferController::class, 'addToTeam']);
+    Route::post('/removeFromTeam', [GolferController::class, 'removeFromTeam']);
 
     //golfer function to show golfers
     Route::get('/getgolfer', [GolferController::class, 'show']);

@@ -12,8 +12,8 @@ class Golfer extends Model
 
     protected $fillable = ['name', 'score', 'country', 'position', 'total_to_par'];
 
-    public function teamGolfer()
-    {
-        return $this->hasMany(TeamGolfer::class);
-    }
+    // public function teamGolfer()
+    // {
+    //     return $this->hasMany(TeamGolfer::class);
+    // }
 }

@@ -15,6 +15,7 @@ class CreateGolfersTable extends Migration
     {
         Schema::create('golfers', function (Blueprint $table) {
             $table->id();
+            // TODO: connect id to backend, with the real golf data
             $table->string('name');
             $table->integer('score');
             $table->string('country');

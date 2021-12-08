@@ -23,7 +23,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        return User::with(['team.teamGolfers.golfer'])->where('id', $request->user()->id)->get();
+        return User::with(['team.teamGolfers'])->where('id', $request->user()->id)->get();
     }
 
     /**
@@ -122,7 +122,7 @@ class UserController extends Controller
       $success['token'] = $user->createToken('appToken')->accessToken;
       $event = "register";
       $createdAt = date("l jS \of F Y h:i:s A");
-      $team= Team::create(['name' => '', 'user_id' => $user->id]);
+      $team = Team::create(['name' => '', 'user_id' => $user->id]);
       $group = Group::create(['name' => '', 'user_id' => $user->id]);
 
       return response()->json([
