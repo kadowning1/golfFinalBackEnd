@@ -26,10 +26,14 @@ class TeamController extends Controller
     public function create(Request $request)
     {
         $user = $request->user();
-        $team = new Team;
-        $team->name = $user->input('name');
-        $team->user_id = $request->user()->id;
-        $team->save();
+
+        $group = new Team;
+        $group->name = $request->name;
+        $group->user_id = $request->user()->id;
+        $group->group_id = $request->user()->id;
+        $group->save();
+
+        return $group->toArray();
     }
 
     /**
