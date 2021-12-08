@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Group;
+use App\Models\UserGroup;
 use Illuminate\Http\Request;
 use App\Http\Resources\GroupsResource;
 use Illuminate\Database\Eloquent\Builder;
@@ -30,8 +31,11 @@ class GroupController extends Controller
         $group = new Group;
         $group->name = $request->name;
         $group->user_id = $request->user()->id;
-        $group->save();
 
+        // $usergroup = new UserGroup();
+        // $usergroup->team_id = $request->team_id;
+
+        $group->save();
         return $group->toArray();
 
     }
@@ -98,5 +102,6 @@ class GroupController extends Controller
         $user = $request->user();
         $groupname = Group::where('user_id', '=', $user->id)->where('name', '=', $request->group);
         $groupname->save();
+        return $groupname->toArray();
     }
 }

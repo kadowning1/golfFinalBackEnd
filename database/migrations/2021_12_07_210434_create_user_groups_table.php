@@ -28,7 +28,7 @@ class CreateUserGroupsTable extends Migration
             $table->unsignedBigInteger('group_id');
             $table->foreign('group_id')
                 ->references('id')
-                ->on('group')
+                ->on('groups')
                 ->cascade('delete');
 
             $table->timestamps();

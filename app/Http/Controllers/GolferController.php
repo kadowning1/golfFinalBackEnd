@@ -106,7 +106,7 @@ class GolferController extends Controller
         $teamGolfers = TeamGolfer::all()->where('golfer_id', $golfer->id)->toArray();
 
         foreach ($teamGolfers as $id => $teamGolfer) {
-            // dd($authorBook);
+            // dd($teamGolfer);
             $golferTeam = TeamGolfer::find($teamGolfer['id']);
             $golferTeam->delete();
         }

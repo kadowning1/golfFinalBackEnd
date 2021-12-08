@@ -18,7 +18,7 @@ class TeamSeeder extends Seeder
         // Team::factory(10)->create();
         for ($i=1; $i <= 10; $i++) {
             Team::create( [
-                'name' => '',
+                'name' => 'Awesome Group',
                 'user_id' => $i,
                 'group_id' => $i,
             ]);

@@ -22,8 +22,8 @@ class UserGroupSeeder extends Seeder
             # code...
             $team = Group::all()->random();
             $teamGolfer = new UserGroup();
-            $teamGolfer->golfer_id = $golfers[$i]['id'];
-            $teamGolfer->team_id = $team->id;
+            $teamGolfer->user_id = $golfers[$i]['id'];
+            $teamGolfer->group_id = $team->id;
             $teamGolfer->save();
         }
     }
