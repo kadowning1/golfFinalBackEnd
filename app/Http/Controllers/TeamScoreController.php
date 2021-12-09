@@ -82,4 +82,10 @@ class TeamScoreController extends Controller
     {
         //
     }
+
+    public function gettotal(Request $request)
+    {
+        $score = TeamScore::with(['team.score'])->where('score', $request->user()->score)->get();
+        return response(['data' => $score, 'message' => 'Found team total successfully', 'status' => true]);
+    }
 }

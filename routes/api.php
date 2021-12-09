@@ -6,6 +6,7 @@ use App\Http\Controllers\GroupController;
 use App\Http\Controllers\GolferController;
 use App\Http\Controllers\DeadlineController;
 use App\Http\Controllers\TeamGolferController;
+use App\Http\Controllers\TeamScoreController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -41,6 +42,9 @@ Route::middleware('auth:api')->prefix('v1')->group(function () {
 
     //golfer function to show golfers
     Route::get('/getgolfer', [GolferController::class, 'show']);
+
+    //get total team scores route
+    Route::get('/gettotal', [TeamScoreController::class, 'gettotal']);
 
     //deadline functions
     // Route::get('/startdeadline', [DeadlineController::class, 'start']);
