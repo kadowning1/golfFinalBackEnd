@@ -92,9 +92,9 @@ class GolferController extends Controller
 
     public function addToTeam(Request $request)
     {
-        Log::debug($request);
+        // Log::debug($request);
         $user = $request->user();
-        Log::debug($user);
+        // Log::debug($user);
         $teamgolfer = new TeamGolfer();
         $teamgolfer->golfer_id = $request->golfer_id;
         $teamgolfer->team_id = $request->team_id;

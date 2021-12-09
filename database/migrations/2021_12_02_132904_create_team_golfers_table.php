@@ -24,7 +24,7 @@ class CreateTeamGolfersTable extends Migration
                 // TODO: connect this to backend, with the real golf data
             $table->integer('golfer_id');
             $table->string('name');
-            $table->integer('points');
+            $table->integer('score');
             // $table->unsignedBigInteger('golfer_id');
             // $table->foreign('golfer_id')
             //     ->references('golfer_id')
