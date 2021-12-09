@@ -90,27 +90,4 @@ class GolferController extends Controller
 
 
 
-    public function addToTeam(Request $request)
-    {
-        // Log::debug($request);
-        $user = $request->user();
-        // Log::debug($user);
-        $teamgolfer = new TeamGolfer();
-        $teamgolfer->golfer_id = $request->golfer_id;
-        $teamgolfer->team_id = $request->team_id;
-        $teamgolfer->save();
-    }
-
-    public function removeFromTeam(Golfer $golfer)
-    {
-        $teamGolfers = TeamGolfer::all()->where('golfer_id', $golfer->id)->toArray();
-
-        foreach ($teamGolfers as $id => $teamGolfer) {
-            // dd($teamGolfer);
-            $golferTeam = TeamGolfer::find($teamGolfer['id']);
-            $golferTeam->delete();
-        }
-        // $golfer->delete();
-        return response(null, 204);
-    }
 }

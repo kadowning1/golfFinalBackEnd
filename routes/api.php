@@ -5,6 +5,7 @@ use App\Http\Controllers\TeamController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\GolferController;
 use App\Http\Controllers\DeadlineController;
+use App\Http\Controllers\TeamGolferController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -35,8 +36,8 @@ Route::middleware('auth:api')->prefix('v1')->group(function () {
     //team functions
     Route::post('/updateteam', [TeamController::class, 'update_team']);
     Route::get('/getteam', [TeamController::class, 'show']);
-    Route::post('/addToTeam', [GolferController::class, 'addToTeam']);
-    Route::post('/removeFromTeam', [GolferController::class, 'removeFromTeam']);
+    Route::post('/addToTeam', [TeamGolferController::class, 'addToTeam']);
+    Route::post('/removeFromTeam', [TeamGolferController::class, 'removeFromTeam']);
 
     //golfer function to show golfers
     Route::get('/getgolfer', [GolferController::class, 'show']);

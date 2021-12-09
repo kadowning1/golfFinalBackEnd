@@ -82,4 +82,19 @@ class TeamGolferController extends Controller
     {
         //
     }
+
+    public function addToTeam(Request $request)
+    {
+        $teamgolfer = new TeamGolfer();
+        $teamgolfer->golfer_id = $request->golfer_id;
+        $teamgolfer->team_id = $request->team_id;
+        $teamgolfer->save();
+    }
+
+    public function removeFromTeam(Request $request)
+    {
+        $teamGolfer = TeamGolfer::where('golfer_id', '=', $request->golfer_id)->where('team_id', '=',$request->team_id);
+        $teamGolfer->delete();
+        return response('Deleted Golfer From Team Successfully', 204);
+    }
 }
