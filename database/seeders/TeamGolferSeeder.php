@@ -20,7 +20,7 @@ class TeamGolferSeeder extends Seeder
         for ($i=0; $i < count($golfers); $i++) {
             # code...
             $team = Team::all()->random();
-            $teamGolfer = new TeamGolfer();
+            $teamGolfer = new TeamGolfer;
             $teamGolfer->golfer_id = $golfers[$i]['id'];
             $teamGolfer->team_id = $team->id;
             $teamGolfer->save();

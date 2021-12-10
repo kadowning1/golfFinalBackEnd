@@ -22,14 +22,14 @@ class CreateTeamGolfersTable extends Migration
                 ->cascade('delete');
 
                 // TODO: connect this to backend, with the real golf data
-            $table->integer('golfer_id');
-            $table->string('name');
-            $table->integer('score');
-            // $table->unsignedBigInteger('golfer_id');
-            // $table->foreign('golfer_id')
-            //     ->references('golfer_id')
-            //     ->on('golfers')
-            //     ->cascade('delete');
+            // $table->integer('golfer_id');
+            // $table->string('name');
+
+            $table->unsignedBigInteger('golfer_id');
+            $table->foreign('golfer_id')
+                ->references('id')
+                ->on('golfers')
+                ->cascade('delete');
 
             $table->timestamps();
         });

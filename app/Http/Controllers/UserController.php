@@ -6,12 +6,14 @@ use App\Models\User;
 use App\Models\Team;
 use App\Models\Group;
 use App\Models\UserRole;
+use App\Models\UserGroup;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
 use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 
@@ -105,8 +107,7 @@ class UserController extends Controller
       $validator = Validator::make($request->all(), [
         'name' => 'required',
         'email' => 'required|email|unique:users',
-        'password' => 'required',
-        'age' => 'required'
+        'password' => 'required'
       ]);
       if ($validator->fails()) {
         return response()->json([
@@ -122,15 +123,24 @@ class UserController extends Controller
       $success['token'] = $user->createToken('appToken')->accessToken;
       $event = "register";
       $createdAt = date("l jS \of F Y h:i:s A");
-      $team = Team::create(['name' => '', 'user_id' => $user->id]);
-      $group = Group::create(['name' => '', 'user_id' => $user->id]);
+
+      //$group = Group::create(['name' => 'Group Name', 'user_id' => $user->id]);
+      $group = new Group;
+      $group->name = "Group Name";
+      $group->user_id = $user->id;
+      $group->save();
+
+      $userGroup = UserGroup::create(['user_id' => $user->id, 'group_id' => $group->id]);
+      $team = Team::create(['name' => 'Team Name', 'user_id' => $user->id, 'group_id' => $group->id]);
+      $userGroup = UserGroup::create(['user_id' => $user->id, 'group_id' => $group->id]);
 
       return response()->json([
         'success' => true,
         'access_token' => $success,
         'user' => $user,
-        'team' => $team,
         'group' => $group,
+        'user_group' => $userGroup,
+        'team' => $team,
         'event' => $event,
         'created_at' => $createdAt
       ]);

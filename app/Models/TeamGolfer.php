@@ -17,11 +17,11 @@ class TeamGolfer extends Model
 
     public function team()
     {
-        return $this->belongsTo(Team::class);
+        return $this->hasOne(Team::class);
     }
 
-    // public function golfer()
-    // {
-    //     return $this->belongsTo(Golfer::class);
-    // }
+    public function golfer()
+    {
+        return $this->hasOne(Golfer::class);
+    }
 }

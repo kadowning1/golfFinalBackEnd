@@ -20,7 +20,7 @@ class CreateGolfersTable extends Migration
             $table->integer('score');
             $table->string('country');
             $table->integer('position');
-            $table->string('total_to_par');
+            $table->integer('total_to_par');
             $table->timestamps();
         });
     }
