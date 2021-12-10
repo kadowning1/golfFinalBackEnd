@@ -20,8 +20,8 @@ class TeamGolfer extends Model
         return $this->hasOne(Team::class);
     }
 
-    public function golfer()
-    {
-        return $this->hasOne(Golfer::class);
-    }
+    // public function golfer()
+    // {
+    //     return $this->hasOne(Golfer::class);
+    // }
 }

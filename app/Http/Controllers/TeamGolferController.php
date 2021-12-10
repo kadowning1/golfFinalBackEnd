@@ -85,7 +85,7 @@ class TeamGolferController extends Controller
 
     public function addToTeam(Request $request)
     {
-        $teamgolfer = new TeamGolfer();
+        $teamgolfer = new TeamGolfer;
         $teamgolfer->golfer_id = $request->golfer_id;
         $teamgolfer->team_id = $request->team_id;
         $teamgolfer->save();
