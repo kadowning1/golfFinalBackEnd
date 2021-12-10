@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TeamScore;
 use Illuminate\Http\Request;
+use App\Http\Resources\TeamScoreResource;
 
 class TeamScoreController extends Controller
 {
@@ -14,7 +15,7 @@ class TeamScoreController extends Controller
      */
     public function index()
     {
-        //
+        return TeamScoreResource::collection(TeamScore::all());
     }
 
     /**
@@ -85,7 +86,7 @@ class TeamScoreController extends Controller
 
     public function gettotal(Request $request)
     {
-        $score = TeamScore::with(['team.score'])->where('score', $request->user()->score)->get();
+        $score = TeamScore::with(['team_score'])->where('score', $request->user()->score)->get()->toArray();
         return response(['data' => $score, 'message' => 'Found team total successfully', 'status' => true]);
     }
 }

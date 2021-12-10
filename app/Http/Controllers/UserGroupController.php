@@ -17,6 +17,16 @@ class UserGroupController extends Controller
         //
     }
 
+
+    public function join(Request $request)
+    {
+        $user_group = new UserGroup;
+
+        $user_group->group_id =  $request->group_id;
+        $user_group->user_id =  $request->user()->id;
+
+        $user_group->save();
+    }
     /**
      * Show the form for creating a new resource.
      *

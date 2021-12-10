@@ -23,7 +23,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        return User::with(['team.teamGolfers'])->where('id', $request->user()->id)->get();
+        return User::with(['team.teamGolfers', 'userGroups.group'])->where('id', $request->user()->id)->get();
     }
 
     /**

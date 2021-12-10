@@ -5,9 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-use App\Models\User;
-use App\Models\Team;
-
 class Group extends Model
 {
     use HasFactory;
@@ -19,8 +16,8 @@ class Group extends Model
         return $this->hasMany(Team::class);
     }
 
-    public function user()
+    public function userGroups()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(UserGroup::class);
     }
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\GolferController;
 use App\Http\Controllers\DeadlineController;
 use App\Http\Controllers\TeamGolferController;
 use App\Http\Controllers\TeamScoreController;
+use App\Http\Controllers\UserGroupController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -29,7 +30,7 @@ Route::middleware('auth:api')->prefix('v1')->group(function () {
     Route::get('/logout', [UserController::class, 'logout']);
 
     //group functions
-    Route::post('/joingroup', [GroupController::class, 'join']);
+    Route::post('/joingroup', [UserGroupController::class, 'join']);
     Route::post('/creategroup', [GroupController::class, 'create']);
     Route::get('/group', [GroupController::class, 'index']);
 
@@ -44,7 +45,7 @@ Route::middleware('auth:api')->prefix('v1')->group(function () {
     Route::get('/getgolfer', [GolferController::class, 'show']);
 
     //get total team scores route
-    Route::get('/gettotal', [TeamScoreController::class, 'gettotal']);
+    Route::get('/gettotal', [TeamScoreController::class, 'index']);
 
     //deadline functions
     // Route::get('/startdeadline', [DeadlineController::class, 'start']);

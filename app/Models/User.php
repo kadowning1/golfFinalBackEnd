@@ -38,9 +38,9 @@ class User extends Authenticatable
         return $this->hasOne(Team::class);
     }
 
-    public function group()
+    public function userGroups()
     {
-        return $this->hasOne(Group::class);
+        return $this->hasMany(UserGroup::class);
     }
 
     /**
