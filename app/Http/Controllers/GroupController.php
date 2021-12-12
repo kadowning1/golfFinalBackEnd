@@ -32,12 +32,13 @@ class GroupController extends Controller
         $group->name = $request->name;
         $group->user_id = $request->user()->id;
 
-        // $usergroup = new UserGroup();
-        // $usergroup->team_id = $request->team_id;
+        $user_group = new UserGroup;
+        $user_group->group_id =  $request->group_id;
+        $user_group->user_id =  $request->user()->id;
 
         $group->save();
+        $user_group->save();
         return $group->toArray();
-
     }
 
     /**
@@ -95,6 +96,4 @@ class GroupController extends Controller
     {
         //
     }
-
-
 }

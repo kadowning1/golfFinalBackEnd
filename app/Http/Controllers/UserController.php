@@ -126,12 +126,12 @@ class UserController extends Controller
 
       //$group = Group::create(['name' => 'Group Name', 'user_id' => $user->id]);
       $group = new Group;
-      $group->name = "Group Name";
+      $group->name = "";
       $group->user_id = $user->id;
       $group->save();
 
       $userGroup = UserGroup::create(['user_id' => $user->id, 'group_id' => $group->id]);
-      $team = Team::create(['name' => 'Team Name', 'user_id' => $user->id, 'group_id' => $group->id]);
+      $team = Team::create(['name' => '', 'user_id' => $user->id, 'group_id' => $group->id]);
 
       return response()->json([
         'success' => true,
