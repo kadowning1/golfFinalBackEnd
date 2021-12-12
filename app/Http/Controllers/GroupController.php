@@ -27,19 +27,17 @@ class GroupController extends Controller
      */
     public function create(Request $request)
     {
-        $user = $request->user();
-        $group = new Group;
+        $group = new Group();
         $group->name = $request->name;
         $group->user_id = $request->user()->id;
-
-        $user_group = new UserGroup;
-        $user_group->group_id =  $request->group_id;
-        $user_group->user_id =  $request->user()->id;
-
         $group->save();
+
+        $user_group = new UserGroup();
+        $user_group->group_id = $group->id;
+        $user_group->user_id = $request->user()->id;
         $user_group->save();
-        return $group->toArray();
-    }
+        return 'success';
+        }
 
     /**
      * Store a newly created resource in storage.
