@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Team;
+use App\Models\Group;
+use App\Models\UserGroup;
 use Illuminate\Http\Request;
 use App\Http\Resources\TeamsResource;
 
@@ -15,8 +17,10 @@ class TeamController extends Controller
      */
     public function index(Request $request)
     {
-        $user = $request->user();
-        $teamgroup = Team::where('user_id', '=', $user->id)->where('group_id', '=', $request->group_id)->get();
+        // dd($request->id);
+        $teamgroup = UserGroup::with(['group.teams.teamScore', 'user.team'])->where('user_id', '=', $request->user()->id)
+        // ->where('group_id', '=', $request->group_id)
+        ->get();
         return $teamgroup->toArray();
     }
 
@@ -101,6 +105,12 @@ class TeamController extends Controller
         $team->name = $request->name;
         $team->save();
     }
-
+    public function getGroupStandings(Request $request)
+    {
+        $group = UserGroup::with('user.team.teamscore', 'group.userGroups.user.team.teamscore')
+        ->where('user_id', '=', $request->user()->id)
+        ->get();
+        return $group->toArray();
+    }
 
 }
