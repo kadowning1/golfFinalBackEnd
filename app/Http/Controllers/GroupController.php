@@ -36,8 +36,8 @@ class GroupController extends Controller
         $user_group->group_id = $group->id;
         $user_group->user_id = $request->user()->id;
         $user_group->save();
-        return 'success';
-        }
+        return ['usergroup' => $user_group, 'group' => $group];
+    }
 
     /**
      * Store a newly created resource in storage.

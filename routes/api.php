@@ -38,6 +38,7 @@ Route::middleware('auth:api')->prefix('v1')->group(function () {
     //team functions
     Route::post('/updateteam', [TeamController::class, 'update_team']);
     Route::get('/getteam', [TeamController::class, 'show']);
+    Route::get('/getgroupteam', [TeamController::class, 'index']);
     Route::post('/addToTeam', [TeamGolferController::class, 'addToTeam']);
     Route::post('/removeFromTeam', [TeamGolferController::class, 'removeFromTeam']);
 

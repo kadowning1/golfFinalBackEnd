@@ -13,9 +13,11 @@ class TeamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $user = $request->user();
+        $teamgroup = Team::where('user_id', '=', $user->id)->where('group_id', '=', $request->group_id)->get();
+        return $teamgroup->toArray();
     }
 
     /**
